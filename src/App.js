@@ -5,9 +5,24 @@ import { Switch, BrowserRouter, Route } from "react-router-dom";
 import ShopPage from './pages/Shop/shop.component';
 import SignInAndSignUpPage from './pages/Sign-in-Sign-up/Sign-in-and-sing-up.component';
 import Header from './components/Header/header.component';
+import { auth } from './firebase/firebase.util';
 
-function App() {
-  return (
+class App extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentUser:null
+    }
+
+  }
+  componentDidMount() {
+    auth.onAuthStateChanged(user => {
+      this.setState({ currentUser: user })
+      console.log(user);
+    })
+  }
+  render() {
+    return (
     <BrowserRouter>
       <div className="App">
         <Header></Header>
@@ -25,6 +40,7 @@ function App() {
       </div>
     </BrowserRouter>
   );
+  }
 }
 
 export default App;
