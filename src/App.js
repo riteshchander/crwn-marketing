@@ -44,13 +44,13 @@ class App extends React.Component {
         <div className="App">
           <Header currentUser={this.state.currentUser}></Header>
           <Switch>
-            <Route exact="true" path="/">
+            <Route exact path="/">
               <HomePage />
             </Route>
-            <Route exact="true" path="/shop">
+            <Route exact path="/shop">
               <ShopPage />
             </Route>
-            <Route exact="true" path="/signin">
+            <Route exact path="/signin" >
               <SignInAndSignUpPage />
             </Route>
           </Switch>
